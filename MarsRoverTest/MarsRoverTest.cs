@@ -19,8 +19,8 @@ namespace MarsRoverTest
             IPilot pilotOne = new Pilot(new Position(1, 2), Directions.N);
             Rover firstRover = new Rover(plateau, pilotOne);
             RoverController.ExecuteCommands("LMLMLMLMM", firstRover);
-            var finalOrientation = new Pilot(new Position(1, 3), Directions.N);
-            Assert.That(firstRover.Move, Is.EqualTo(finalOrientation));
+            var finalPilot = new Pilot(new Position(1, 3), Directions.N);
+            Assert.That(firstRover.Pilot, Is.EqualTo(finalPilot));
 
         }
 
@@ -34,8 +34,8 @@ namespace MarsRoverTest
             IPilot pilot2 = new Pilot(new Position(3, 3), Directions.E);
             Rover secondRover = new Rover(plateau, pilot2);
             RoverController.ExecuteCommands("MMRMMRMRRM", secondRover);
-            var finalOrientation = new Pilot(new Position(5, 1), Directions.E);
-            Assert.That(secondRover.Move, Is.EqualTo(finalOrientation));
+            var finalPilot = new Pilot(new Position(5, 1), Directions.E);
+            Assert.That(secondRover.Pilot, Is.EqualTo(finalPilot));
         }
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace MarsRoverTest
             
             IPosition initialPosition = new Position(0, 0);
             var endPosition = new Position(0, 0);
-            IPilot orientation = new Pilot(initialPosition, Directions.E);
+            IPilot pilot = new Pilot(initialPosition, Directions.E);
             Plateau plateau = new Plateau(new Position(5, 5));      
-            var rover = new Rover(plateau, orientation);
+            var rover = new Rover(plateau, pilot);
             Assert.That(rover.GetPosition(), Is.EqualTo(endPosition));
         }
     }
